@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">📚 BookShelf</div>
+    <p class="nav-label">MAIN MENU</p>
+    <a class="nav-link active" href="#dashboard">▦ Dashboard</a>
+    <a class="nav-link" href="#inventory">📖 Book Inventory</a>
+    <a class="nav-link" href="#add-book">＋ Add New Book</a>
+    <div class="sidebar-bottom">Library Management<br><small>Version 1.0</small></div>
+  </aside>
+
+  <main class="main-content" id="dashboard">
+    <header class="topbar">
+      <div>
+        <h1>Library Dashboard</h1>
+        <p class="muted">Manage your books in one place.</p>
+      </div>
+      <button class="primary-btn" id="open-form">+ Add Book</button>
+    </header>
+
+    <section class="stats">
+      <article class="stat-card">
+        <span class="stat-icon blue">📚</span>
+        <p>Total Books</p>
+        <h2 id="total-books">0</h2>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon green">✓</span>
+        <p>Available Copies</p>
+        <h2 id="available-books">0</h2>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon orange">✎</span>
+        <p>Book Titles</p>
+        <h2 id="unique-books">0</h2>
+      </article>
+    </section>
+
+    <section class="panel" id="inventory">
+      <div class="panel-heading">
+        <div>
+          <h2>Book Inventory</h2>
+          <p class="muted">View and manage your library collection.</p>
+        </div>
+        <input id="search-input" type="search"
+          placeholder="Search title, author, ISBN..."
+          aria-label="Search books">
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>BOOK DETAILS</th>
+              <th>AUTHOR</th>
+              <th>ISBN</th>
+              <th>CATEGORY</th>
+              <th>COPIES</th>
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody id="book-list"></tbody>
+        </table>
+      </div>
+      <p id="empty-message" class="empty-message" hidden>
+        No books found. Try a different search or add a new book.
+      </p>
+      <div class="table-footer" id="result-count">Showing 0 books</div>
+    </section>
+
+    <section class="panel form-panel" id="add-book">
+      <div class="panel-heading">
+        <div>
+          <h2>Add a New Book</h2>
+          <p class="muted">Enter the details to add a book to your inventory.</p>
+        </div>
+      </div>
+
+      <form id="book-form">
+        <div class="form-grid">
+          <label>Book Title *
+            <input id="title" name="title" required maxlength="100"
+              placeholder="e.g. The Alchemist">
+          </label>
+          <label>Author *
+            <input id="author" name="author" required maxlength="80"
+              placeholder="e.g. Paulo Coelho">
+          </label>
+          <label>ISBN *
+            <input id="isbn" name="isbn" required maxlength="20"
+              placeholder="e.g. 9780061122415">
+          </label>
+          <label>Category *
+            <select id="category" name="category" required>
+              <option value="">Select category</option>
+              <option>Fiction</option>
+              <option>Science</option>
+              <option>Technology</option>
+              <option>Education</option>
+              <option>History</option>
+              <option>Biography</option>
+              <option>Business</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label>Number of Copies *
+            <input id="copies" name="copies" type="number"
+              min="1" max="10000" step="1" value="1" required>
+          </label>
+        </div>
+        <div class="form-actions">
+          <button type="reset" class="secondary-btn">Clear</button>
+          <button type="submit" class="primary-btn">Save Book</button>
+        </div>
+        <p id="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <footer>© 2026 BookShelf Library Management System</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
